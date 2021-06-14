@@ -5,10 +5,11 @@ const basketballColumns: string[] = ['No.', 'Player', 'F', '1P', '2P', '3P', 'PT
 
 interface Props {
   score: number;
+  team: string;
   players: {}[];
 }
 
-const ScoresheetTable: React.FC<Props> = ({ players, score }) => {
+const ScoresheetTable: React.FC<Props> = ({ players, score, team }) => {
   return (
     <div className="scoresheet__table">
       <div className="row row__header">
@@ -23,6 +24,7 @@ const ScoresheetTable: React.FC<Props> = ({ players, score }) => {
           playerId={player.id}
           playerNumber={player.playerNumber}
           playerName={player.name}
+          team={team}
         />
       ))}
     </div>

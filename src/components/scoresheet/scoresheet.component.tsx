@@ -10,11 +10,19 @@ export const Scoresheet: React.FC = () => {
         <div className="scoresheet basketball">
           <Card>
             <div className="scoresheet__team-name padding-normal">Chicago Bulls</div>
-            <ScoresheetTable players={homeTeamPlayers} score={homeTeamScore} />
+            <ScoresheetTable
+              players={homeTeamPlayers}
+              score={homeTeamScore}
+              team={'home'}
+            />
           </Card>
           <Card>
             <div className="scoresheet__team-name padding-normal">New York Knicks</div>
-            <ScoresheetTable players={awayTeamPlayers} score={awayTeamScore} />
+            <ScoresheetTable
+              players={awayTeamPlayers}
+              score={awayTeamScore}
+              team={'away'}
+            />
           </Card>
         </div>
       )}
