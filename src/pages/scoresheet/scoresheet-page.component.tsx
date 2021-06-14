@@ -6,7 +6,7 @@ import Scoresheet from '../../components/scoresheet/scoresheet.component';
 const ScoresheetPage: React.FC = () => {
   return (
     <ScoreboardContextProvider>
-      <section className="scoreboard-page">
+      <section className="scoreboard-page padding-normal">
         <Scoreboard />
         <Scoresheet />
       </section>
