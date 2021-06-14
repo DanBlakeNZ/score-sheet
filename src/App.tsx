@@ -1,14 +1,18 @@
 import React from 'react';
-import './App.css';
-import GlobalStyle from './theme/globalStyle';
+import NavigationBar from './components/navigation-bar/navigation-bar.component';
+import Header from './components/header/header.component';
+import ScoresheetPage from './pages/scoresheet/scoresheet-page.component';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <GlobalStyle />
-      <div className="App">This is the APP component.</div>
-    </>
+    <section className="app-container">
+      <NavigationBar />
+      <main>
+        <Header />
+        <ScoresheetPage />
+      </main>
+    </section>
   );
-}
+};
 
 export default App;

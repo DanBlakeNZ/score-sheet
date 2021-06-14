@@ -1,0 +1,76 @@
+// Global Styles
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+// Because 16 * .625 = 10, so now we can work with rems in a base 10 system just like pixels. eg 2.2 rems = 22px.
+
+body {
+  color: $navyBlue;
+  font-family: Barlow, sans-serif;
+  font-size: $font-medium;
+  font-style: normal;
+  font-weight: 400;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  line-height: 1.25;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+select {
+  width: 100%;
+  background: transparent;
+  color: $white;
+  font-size: $font-medium;
+  height: 4rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+// Global classes
+.app-container {
+  display: grid;
+  margin: 0 auto;
+  max-width: 120rem;
+  grid-template-columns: auto auto;
+  z-index: 1;
+}
+
+.center-element {
+  margin: 0 auto;
+}
+
+.padding-normal {
+  padding: 1.6rem;
+}

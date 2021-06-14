@@ -1,0 +1,40 @@
+.navigation-bar {
+  background-color: $purpleBlue;
+  color: $white;
+  width: 20rem;
+  height: 100vh;
+
+  .play-hq-logo {
+    height: 3.7rem;
+    margin: 0 auto;
+  }
+
+  &__section {
+    padding: $padding-medium;
+    border-bottom: 1px solid $darkBlue;
+  }
+
+  &__item {
+    border-bottom: 0.2rem solid $purpleBlue;
+    opacity: 0.8;
+    transition: $opacity;
+
+    &:hover {
+      border-bottom: 0.2rem solid $skyBlue;
+      opacity: 1;
+    }
+
+    a {
+      align-items: center;
+      display: flex;
+      font-weight: 700;
+      padding: $padding-small 0;
+      width: 100%;
+    }
+
+    img {
+      margin-right: 1rem;
+      width: 2.5rem;
+    }
+  }
+}

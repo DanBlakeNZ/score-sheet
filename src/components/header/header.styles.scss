@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  height: 7rem;
+  background-color: $purpleBlue;
+  color: $white;
+  padding: 0 $padding-medium;
+
+  &__breadcrumbs {
+    margin-top: 0.3rem;
+    display: flex;
+  }
+
+  &__breadcrumb {
+    font-size: $font-small;
+
+    &:not(:last-child):after {
+      content: '>';
+      padding: 0 0.5rem;
+    }
+
+    &:last-child {
+      cursor: default;
+      font-weight: 700;
+    }
+
+    a {
+      padding-bottom: 0.2rem;
+      &:hover {
+        border-bottom: 0.1rem solid $skyBlue;
+      }
+    }
+  }
+}
