@@ -7,9 +7,20 @@ interface Props {
   score: number;
   team: string;
   players: {}[];
+  playersScore: {
+    id: number;
+    '1ptCount': number;
+    '2ptCount': number;
+    '3ptCount': number;
+    total: number;
+  }[];
 }
 
-const ScoresheetTable: React.FC<Props> = ({ players, score, team }) => {
+const ScoresheetTable: React.FC<Props> = ({ players, score, team, playersScore }) => {
+  const getPlayersTotal = (playerId: number) => {
+    const arrayIndex = playersScore.findIndex((element: any) => element.id === playerId);
+    return arrayIndex >= 0 ? playersScore[arrayIndex].total : 0;
+  };
   return (
     <div className="scoresheet__table">
       <div className="row row__header">
@@ -24,6 +35,7 @@ const ScoresheetTable: React.FC<Props> = ({ players, score, team }) => {
           playerId={player.id}
           playerNumber={player.playerNumber}
           playerName={player.name}
+          playerTotalPoints={getPlayersTotal(player.id)}
           team={team}
         />
       ))}

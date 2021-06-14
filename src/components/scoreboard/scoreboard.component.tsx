@@ -16,8 +16,20 @@ const Scoreboard: React.FC = () => {
               />
               <span className="center-element">Chicago Bulls</span>
             </div>
-            <div className="scoreboard__score">{homeTeamScore}</div>
-            <div className="scoreboard__score scoreboard__losing">{awayTeamScore}</div>
+            <div
+              className={`scoreboard__score ${
+                awayTeamScore > homeTeamScore && 'scoreboard__losing '
+              } `}
+            >
+              {homeTeamScore}
+            </div>
+            <div
+              className={`scoreboard__score ${
+                homeTeamScore > awayTeamScore && 'scoreboard__losing '
+              } `}
+            >
+              {awayTeamScore}
+            </div>
             <div className="scoreboard__team">
               <span className="center-element">New York Knicks</span>
               <img

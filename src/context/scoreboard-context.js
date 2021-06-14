@@ -19,7 +19,7 @@ class ScoreboardContextProvider extends Component {
     const { name, value } = event.target;
 
     // 1. Make a shallow copy of the items
-    let teamPlayersScore =
+    const teamPlayersScore =
       team === 'home'
         ? [...this.state.homeTeamPlayersScore]
         : [...this.state.awayTeamPlayersScore];
@@ -38,11 +38,14 @@ class ScoreboardContextProvider extends Component {
         '1ptCount': 0,
         '2ptCount': 0,
         '3ptCount': 0,
+        total: 0,
       };
     }
 
     // // // 3. Replace the property you're intested in
-    playerScore[name] = parseInt(value);
+    playerScore[name] = parseInt(value || 0);
+    playerScore.total =
+      playerScore['1ptCount'] + playerScore['2ptCount'] * 2 + playerScore['3ptCount'] * 3;
 
     // // // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
     if (arrayIndex >= 0) {
@@ -51,28 +54,17 @@ class ScoreboardContextProvider extends Component {
       teamPlayersScore.push(playerScore);
     }
 
-    const total1p = teamPlayersScore
-      .map((player) => player['1ptCount'])
+    const teamScoreTotal = teamPlayersScore
+      .map((player) => player['total'])
       .reduce((total, num) => total + num);
-
-    const total2p = teamPlayersScore
-      .map((player) => player['2ptCount'])
-      .reduce((total, num) => total + num);
-
-    const total3p = teamPlayersScore
-      .map((player) => player['3ptCount'])
-      .reduce((total, num) => total + num);
-
-    const total = total1p + total2p * 2 + total3p * 3;
-    console.log(total);
 
     // // // 5. Set the state to our new copy
     if (team === 'home') {
       this.setState({ homeTeamPlayersScore: teamPlayersScore });
-      this.setState({ homeTeamScore: total });
+      this.setState({ homeTeamScore: teamScoreTotal });
     } else {
       this.setState({ awayTeamPlayersScore: teamPlayersScore });
-      this.setState({ awayTeamScore: total });
+      this.setState({ awayTeamScore: teamScoreTotal });
     }
   };
 
@@ -84,6 +76,8 @@ class ScoreboardContextProvider extends Component {
           homeTeamPlayers: this.state.homeTeamPlayers,
           awayTeamScore: this.state.awayTeamScore,
           awayTeamPlayers: this.state.awayTeamPlayers,
+          homeTeamPlayersScore: this.state.homeTeamPlayersScore,
+          awayTeamPlayersScore: this.state.awayTeamPlayersScore,
           updatePlayerScore: this.updatePlayerScore,
         }}
       >
